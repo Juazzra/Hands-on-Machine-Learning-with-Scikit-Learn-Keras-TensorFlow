@@ -1,0 +1,41 @@
+Lanskap Machine Learning
+1. Definisi Machine Learning Machine Learning (ML) adalah sains (dan seni) memprogram komputer agar dapat belajar dari data. Secara lebih umum, ML adalah bidang studi yang memberikan komputer kemampuan untuk belajar tanpa harus diprogram secara eksplisit. Sistem ML dikatakan belajar dari pengalaman (E) sehubungan dengan tugas (T) dan ukuran kinerja (P), jika kinerjanya pada T (diukur oleh P) meningkat seiring dengan pengalaman E.
+
+2. Mengapa Menggunakan Machine Learning? Machine Learning sangat berguna untuk:
+
+- Masalah yang membutuhkan daftar aturan yang sangat panjang atau penyetelan (fine-tuning) yang rumit (misalnya filter spam), di mana algoritma ML dapat menyederhanakan kode dan bekerja lebih baik.
+- Masalah kompleks yang tidak dapat diselesaikan dengan pendekatan tradisional atau tidak memiliki algoritma yang diketahui (misalnya pengenalan suara).
+- Lingkungan yang berfluktuasi, di mana sistem ML dapat beradaptasi dengan data baru.
+- Mendapatkan wawasan dari masalah kompleks dan data dalam jumlah besar (data mining) untuk menemukan pola yang tidak terlihat sebelumnya.
+
+
+3. Jenis-Jenis Sistem Machine Learning Sistem ML dapat dikategorikan berdasarkan kriteria berikut:
+
+- Pengawasan Manusia (Human Supervision):
+  - Supervised Learning (Pembelajaran Terawasi): Data pelatihan memiliki label (jawaban yang diinginkan), seperti pada klasifikasi (spam filter) atau regresi (prediksi harga mobil).
+  - Unsupervised Learning (Pembelajaran Tak Terawasi): Data pelatihan tidak berlabel. Sistem mencoba belajar tanpa guru, contohnya clustering, visualisasi, reduksi dimensi, dan deteksi anomali.
+  - Semisupervised Learning: Kombinasi data berlabel dan tidak berlabel (biasanya sedikit data berlabel dan banyak data tidak berlabel).
+  - Reinforcement Learning: Agen mengamati lingkungan, memilih tindakan, dan mendapatkan imbalan (rewards) atau hukuman (penalties) untuk mempelajari strategi terbaik (policy).
+
+- Kemampuan Belajar Secara Inkremental:
+  -Batch Learning: Sistem tidak bisa belajar secara inkremental; harus dilatih menggunakan semua data yang tersedia secara offline.
+  - Online Learning: Sistem belajar secara inkremental dengan memberi data secara berurutan atau dalam kelompok kecil (mini-batches), cocok untuk aliran data kontinu atau sumber daya terbatas.
+
+- Cara Generalisasi:
+  -  Instance-based Learning: Sistem belajar dengan menghafal contoh, lalu menggeneralisasi ke kasus baru menggunakan ukuran kemiripan/similiaritas.
+  - Model-based Learning: Sistem membangun model dari contoh pelatihan untuk membuat prediksi.
+
+4. Tantangan Utama Machine Learning Tugas utama adalah memilih algoritma pembelajaran dan melatihnya pada data, sehingga hal yang bisa salah adalah "algoritma yang buruk" atau "data yang buruk".
+
+- Kuantitas Data Pelatihan yang Tidak Cukup: Algoritma ML membutuhkan banyak data untuk bekerja dengan baik.
+- Data Pelatihan Tidak Representatif: Agar generalisasi baik, data pelatihan harus mewakili kasus baru yang ingin diprediksi; jika tidak, akan terjadi bias sampling.
+- Data Berkualitas Buruk: Data yang penuh kesalahan, outlier, dan noise akan menyulitkan sistem mendeteksi pola.
+- Fitur yang Tidak Relevan: Sistem hanya akan belajar jika data pelatihan mengandung cukup fitur yang relevan (feature engineering sangat penting).
+- Overfitting: Model terlalu kompleks relatif terhadap jumlah dan noise pada data pelatihan, sehingga model "menghafal" pola noise yang tidak bisa digeneralisasi. Solusinya termasuk menyederhanakan model, menambah data, atau mengurangi noise.
+- Underfitting: Model terlalu sederhana untuk mempelajari struktur dasar data.
+
+5. Pengujian dan Validasi
+
+- Test Set: Data dipisahkan menjadi training set dan test set untuk memperkirakan generalization error pada kasus baru sebelum model diluncurkan.
+- Validation Set: Digunakan untuk membandingkan model, memilih model terbaik, dan menyetel hyperparameters (misalnya menggunakan holdout validation atau cross-validation).
+- No Free Lunch Theorem: Tidak ada model yang dijamin bekerja paling baik untuk setiap masalah apriori; satu-satunya cara untuk mengetahuinya adalah dengan mengevaluasi semua model atau membuat asumsi yang wajar tentang data.
