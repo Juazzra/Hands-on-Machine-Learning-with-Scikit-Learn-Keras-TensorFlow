@@ -1,0 +1,46 @@
+Proyek Machine Learning End-to-End
+
+1. Melihat Gambaran Besar (Look at the Big Picture)
+
+- Membingkai Masalah: Tentukan tujuan bisnis. Dalam kasus ini, tujuannya adalah memprediksi harga rumah median di suatu distrik berdasarkan data sensus California.
+- Jenis Masalah: Ini adalah tugas Supervised Learning (karena data memiliki label), Regression (memprediksi nilai numerik), dan lebih spesifik lagi Multiple Regression (menggunakan banyak fitur) dan Univariate Regression (memprediksi satu nilai per distrik).
+- Ukuran Kinerja: Metrik yang umum digunakan untuk regresi adalah Root Mean Square Error (RMSE), yang mengukur seberapa besar kesalahan sistem dalam prediksinya dengan memberikan bobot lebih pada kesalahan besar. Alternatifnya adalah Mean Absolute Error (MAE) jika terdapat banyak outlier.
+
+2. Mendapatkan Data (Get the Data)
+
+- Langkah ini melibatkan pengunduhan data dan pemuatan data menggunakan pustaka seperti Pandas.
+- Melihat struktur data menggunakan metode seperti head(), info(), dan describe() untuk memahami tipe data (numerik vs kategorikal) dan skala data.
+- Membuat Test Set: Sangat penting untuk memisahkan sebagian data (biasanya 20%) sebagai test set di awal dan tidak melihatnya untuk menghindari data snooping bias (bias mengintip data).
+- Stratified Sampling: Jika dataset kecil, pengambilan sampel acak murni dapat menyebabkan bias. Pengambilan sampel berstrata (stratified sampling) memastikan bahwa test set representatif terhadap populasi keseluruhan (misalnya, mewakili berbagai kategori pendapatan).
+
+
+3. Eksplorasi dan Visualisasi Data (Discover and Visualize)
+
+- Visualisasikan data geografis (lintang dan bujur) untuk melihat pola kepadatan dan harga.
+- Mencari Korelasi: Menggunakan koefisien korelasi standar (Pearson’s r) untuk melihat hubungan linier antar fitur (misalnya, pendapatan median dengan harga rumah).
+- Kombinasi Atribut: Mencoba menggabungkan fitur, seperti "jumlah kamar per rumah tangga" alih-alih total kamar, yang mungkin lebih berkolerasi dengan target.
+
+4. Persiapan Data (Prepare the Data) Daripada melakukan secara manual, disarankan menulis fungsi untuk otomatisasi.
+- Pembersihan Data (Data Cleaning): Menangani missing values (data kosong) dengan menghapus distrik, menghapus atribut, atau mengisi nilai (imputation) menggunakan median/mean/nol.
+- Menangani Teks dan Atribut Kategorikal: Mengonversi kategori teks menjadi angka menggunakan Ordinal Encoding (jika ada urutan) atau One-Hot Encoding (jika tidak ada urutan, untuk menghindari asumsi mesin bahwa nilai berdekatan lebih mirip).
+- Skala Fitur (Feature Scaling): Algoritma ML bekerja buruk jika skala input berbeda jauh. Dua cara umum adalah Min-Max Scaling (normalisasi) dan Standardization.
+- Pipeline Transformasi: Menggunakan Pipeline Scikit-Learn untuk menjalankan urutan transformasi secara otomatis, dan ColumnTransformer untuk menangani kolom numerik dan kategorikal secara bersamaan.
+
+5. Memilih dan Melatih Model (Select and Train)
+
+- Mencoba berbagai model dasar seperti Linear Regression (yang mungkin underfitting) atau Decision Tree (yang mungkin overfitting).
+- Evaluasi Menggunakan Cross-Validation: Alih-alih hanya menggunakan satu set validasi, K-fold cross-validation membagi training set menjadi K lipatan (folds) untuk melatih dan mengevaluasi model berkali-kali, memberikan estimasi kinerja yang lebih akurat.
+- Mencoba model yang lebih kompleks seperti Random Forest, yang merupakan contoh Ensemble Learning.
+
+6. Menyetel Model (Fine-Tune Your Model)
+
+- Grid Search: Menggunakan GridSearchCV untuk mengeksplorasi kombinasi hyperparameter secara sistematis guna menemukan model terbaik.
+- Randomized Search: Lebih baik daripada Grid Search jika ruang pencarian hyperparameter sangat besar, karena mengevaluasi jumlah kombinasi acak tertentu.
+- Ensemble Methods: Menggabungkan model-model terbaik sering kali menghasilkan kinerja yang lebih baik daripada model individu.
+- Evaluasi Akhir: Setelah model terbaik dan hyperparameter ditemukan, evaluasi model pada test set untuk mendapatkan estimasi kesalahan generalisasi.
+
+7. Peluncuran, Pemantauan, dan Pemeliharaan Sistem
+
+- Menyimpan model yang sudah dilatih (misalnya menggunakan joblib) untuk digunakan di lingkungan produksi.
+- Membuat skrip pemantauan untuk memeriksa kinerja sistem secara berkala dan memicu peringatan jika kinerja menurun (model bisa "membusuk" seiring waktu karena data berkembang).
+- Mengotomatisasi pelatihan ulang model secara berkala dengan data baru
